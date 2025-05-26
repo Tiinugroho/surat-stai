@@ -8,10 +8,10 @@
 | **Git Push**   | Mengirim perubahan dari komputer lokal ke repository GitHub          |
 | **Merge**      | Menggabungkan branch ke branch utama (biasanya `main` atau `master`) |
 
-git clone
-composer install
-composer update
-php artisan key:generate
+1. | git clone |
+2. | composer install |
+3. | composer update |
+4. | php artisan key:generate |
 
 
 
