@@ -76,6 +76,11 @@ class LoginController extends Controller
         return $this->sendFailedLoginResponse($request);
     }
 
+    public function username()
+    {
+        return 'username';
+    }
+
     protected function validateLogin(Request $request)
     {
         $request->validate([
