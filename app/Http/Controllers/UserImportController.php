@@ -21,6 +21,6 @@ class UserImportController extends Controller
 
         Excel::import(new UsersImport, $request->file('file'));
 
-        return back()->with('success', 'Data user berhasil diimport. Password default = identity_number masing-masing.');
+        return back()->with('success', 'Data user berhasil diimport. Password default = Username masing-masing.');
     }
 }

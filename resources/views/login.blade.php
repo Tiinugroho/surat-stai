@@ -31,15 +31,14 @@
                                 </div>
 
                                 <div class=" mb-4">
-                                        <label for="password"
-                                            class="form-label @error('password') text-danger @enderror">Kata
-                                            Sandi</label>
-                                        <input type="password"
-                                            class="form-control @error('password') is-invalid @enderror" id="password"
-                                            name="password" placeholder="Masukkan kata sandi" required>
-                                        @error('username')
-                                        <span class="invalid-feedback">{{ $message }}</span>
-                                        @enderror
+                                    <label for="password"
+                                        class="form-label @error('password') text-danger @enderror">Kata
+                                        Sandi</label>
+                                    <input type="password" class="form-control @error('password') is-invalid @enderror"
+                                        id="password" name="password" placeholder="Masukkan kata sandi" required>
+                                    @error('username')
+                                    <span class="invalid-feedback">{{ $message }}</span>
+                                    @enderror
                                 </div>
 
                                 <div class="d-grid">

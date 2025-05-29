@@ -23,6 +23,12 @@ class LoginController extends Controller
         $this->middleware('auth')->only('logout');
     }
 
+    public function username()
+    {
+        return 'username';
+    }
+
+
     public function showLoginForm()
     {
         return view('login');
@@ -63,16 +69,15 @@ class LoginController extends Controller
      * Custom redirect path after login
      */
     protected function redirectPath()
-{
-    $user = Auth::user();
+    {
+        $user = Auth::user();
 
-    if (in_array($user->role, ['super-admin', 'dosen', 'tendik'])) {
-        return '/admin/dashboard';
-    } elseif ($user->role === 'mahasiswa') {
-        return '/';
-    } else {
-        return '/';
+        if (in_array($user->role, ['super-admin', 'dosen', 'tendik'])) {
+            return '/admin/dashboard';
+        } elseif ($user->role === 'mahasiswa') {
+            return '/';
+        } else {
+            return '/';
+        }
     }
-}
-
 }

@@ -9,7 +9,7 @@ use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
 class UsersImport implements ToModel, WithHeadingRow
 {
-     public function model(array $row)
+    public function model(array $row)
     {
         if (empty($row['username']) || empty($row['role'])) {
             return null;
