@@ -25,8 +25,8 @@
                                     @error('username')
                                     <span class="invalid-feedback">{{ $message }}</span>
                                     @else
-                                    <span style="font-size: 0.8rem; font-weight: 600;"">* Username NIM untuk Mahasiswa, NIDN untuk
-                                        Pegawai/Dosen</span>
+                                    <small><span class="text-danger">* </span>Username NIM untuk Mahasiswa, NIDN untuk
+                                        Pegawai/Dosen</small>
                                     @enderror
                                 </div>
 

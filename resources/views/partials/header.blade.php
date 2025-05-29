@@ -32,7 +32,7 @@
         @endguest
 
         @auth
-        <a class="btn-getstarted" href="{{route('home')}}">Kembali Ke Dashboard</a>
+        <a class="btn-getstarted" href="{{route('dashboard.index')}}">Kembali Ke Dashboard</a>
         @endauth
 
     </div>

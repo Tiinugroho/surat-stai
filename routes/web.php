@@ -1,10 +1,11 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UserImportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,7 +28,9 @@ Route::get('/', function () {
 // Route::post('/login', [AuthController::class, 'login']);
 // Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-// Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('index');
+Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('dashboard.index')->middleware('auth');
+Route::get('/admin/import-users', [UserImportController::class, 'showImportForm'])->name('admin.import.form');
+Route::post('/admin/import-users', [UserImportController::class, 'import'])->name('admin.import.users');
 
 // ini route package laravel ui | yang false itu routenya tdk aktif, kalo yang true itu aktif
 Auth::routes([
@@ -40,4 +43,6 @@ Auth::routes([
     'login' => true
 ]);
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::fallback(function () {
+    return redirect('/');
+});

@@ -21,7 +21,7 @@ class AuthController extends Controller
 
         if (Auth::attempt(['nim' => $credentials['nim'], 'password' => $credentials['password']])) {
             $request->session()->regenerate();
-            return redirect()->intended('/dashboard'); // ganti dengan dashboard mahasiswa
+            return redirect()->intended('/admin/dashboard'); // ganti dengan dashboard mahasiswa
         }
 
         return back()->withErrors([
