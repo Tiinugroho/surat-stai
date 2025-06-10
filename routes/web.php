@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserImportController;
+use App\Http\Controllers\AdminMahasiswaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +32,8 @@ Route::get('/', function () {
 Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('dashboard.index')->middleware('auth');
 Route::get('/admin/import-users', [UserImportController::class, 'showImportForm'])->name('admin.import.form');
 Route::post('/admin/import-users', [UserImportController::class, 'import'])->name('admin.import.users');
+
+Route::get('/admin/mahasiswa', [AdminMahasiswaController::class, 'index'])->name('admin.mahasiswa.index')->middleware('auth');
 
 // ini route package laravel ui | yang false itu routenya tdk aktif, kalo yang true itu aktif
 Auth::routes([
