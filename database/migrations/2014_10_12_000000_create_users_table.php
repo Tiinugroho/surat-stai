@@ -15,10 +15,13 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('username'); // NIM/NIDN/NIP
+            $table->string('ttl')->nullable();
+            $table->string('alamat')->nullable();
+            $table->string('angkatan')->nullable();
             $table->string('program_study')->nullable();
-            $table->string('password');
             $table->string('keterangan')->nullable();
             $table->string('role'); // mahasiswa, dosen, tendik
+            $table->string('password');
             $table->rememberToken();
             $table->timestamps();
         });
