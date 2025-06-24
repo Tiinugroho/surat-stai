@@ -1,61 +1,62 @@
-@extends('partials.layout')
-@section('title','Login')
-@section('content')
-<main class="main">
+<!DOCTYPE html>
+<html lang="en">
 
-    <!-- Login Form Section -->
-    <section id="hero" class="hero section py-5 dark-background">
-        <img src="{{ asset('frontend/assets/img/world-dotted-map.png')}}" alt="" class="hero-bg" data-aos="fade-in">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | STAI Sulthan Syarif Hasyim</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('adm/dist/assets/css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('adm/dist/assets/vendors/bootstrap-icons/bootstrap-icons.css') }}">
+    <link rel="stylesheet" href="{{ asset('adm/dist/assets/css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('adm/dist/assets/css/pages/auth.css') }}">
+</head>
 
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-5 col-md-8">
-                    <!-- Login Card -->
-                    <div class="card shadow-lg rounded-4 mt-5" data-aos="fade-up">
-                        <div class="card-body">
-                            <h2 class="text-center text-dark mb-4">Login</h2>
+<body>
+    <div id="auth">
 
-                            <form action="{{ route('login') }}" method="post">
-                                @csrf
-                                <div class="mb-4">
-                                    <label for="username"
-                                        class="form-label @error('username') text-danger @enderror">Username</label>
-                                    <input type="text" class="form-control @error('username') is-invalid @enderror"
-                                        id="username" name="username" placeholder="Masukkan Username" required>
-                                    @error('username')
-                                    <span class="invalid-feedback">{{ $message }}</span>
-                                    @else
-                                    <small><span class="text-danger">* </span>Username NIM untuk Mahasiswa, NIDN untuk
-                                        Pegawai/Dosen</small>
-                                    @enderror
-                                </div>
-
-                                <div class=" mb-4">
-                                    <label for="password"
-                                        class="form-label @error('password') text-danger @enderror">Kata
-                                        Sandi</label>
-                                    <input type="password" class="form-control @error('password') is-invalid @enderror"
-                                        id="password" name="password" placeholder="Masukkan kata sandi" required>
-                                    @error('username')
-                                    <span class="invalid-feedback">{{ $message }}</span>
-                                    @enderror
-                                </div>
-
-                                <div class="d-grid">
-                                    <button type="submit" class="btn btn-success">Login</button>
-                                </div>
-                            </form>
-
-                            <!-- <p class="mt-3 text-center">Belum punya akun? <a href="#">Daftar di sini</a></p> -->
-                        </div>
+        <div class="row h-100">
+            <div class="col-lg-5 col-12">
+                <div id="auth-left">
+                    <div class="auth-logo">
+                        <a href="index.html"><img src="{{ asset('adm/dist/assets/images/logo/logo.png') }}"
+                                alt="Logo"></a>
                     </div>
-                    <!-- End Login Card -->
+                    <h1 class="auth-title">Log in.</h1>
+                    <p class="auth-subtitle mb-5">Log in with your data that you entered during registration.</p>
+
+                    <form action="{{ route('login') }}" method="post">
+                        @csrf
+                        <div class="form-group position-relative has-icon-left mb-4">
+                            <input type="text" class="form-control form-control-xl" placeholder="Username" id="username" name="username" required>
+                            <div class="form-control-icon">
+                                <i class="bi bi-person"></i>
+                            </div>
+                        </div>
+                        <div class="form-group position-relative has-icon-left mb-4">
+                            <input type="password" class="form-control form-control-xl" placeholder="Password" id="password" name="password" required>
+                            <div class="form-control-icon">
+                                <i class="bi bi-shield-lock"></i>
+                            </div>
+                        </div>
+                        <div class="form-check form-check-lg d-flex align-items-end">
+                            <input class="form-check-input me-2" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label text-gray-600" for="flexCheckDefault">
+                                Keep me logged in
+                            </label>
+                        </div>
+                        <button class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Log in</button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-7 d-none d-lg-block">
+                <div id="auth-right">
 
                 </div>
             </div>
         </div>
-    </section><!-- /Login Form Section -->
 
-</main>
+    </div>
+</body>
 
-@endsection
+</html>

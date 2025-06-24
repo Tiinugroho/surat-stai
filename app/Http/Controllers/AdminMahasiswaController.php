@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Imports\UsersImport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AdminMahasiswaController extends Controller
 {
@@ -12,7 +14,13 @@ class AdminMahasiswaController extends Controller
     {
         $mahasiswas = User::where('role', 'mahasiswa')->get();
         // Logic to retrieve and display a list of students
-        return view('admin.mahasiswa.index', compact('mahasiswas'));
+        return view('admin.user.mahasiswa.index', compact('mahasiswas'));
+    }
+
+    public function create()
+    {
+        // Logic to show the form for creating a new student
+        return view('admin.user.mahasiswa.create');
     }
 
     public function store(Request $request)
@@ -64,5 +72,16 @@ class AdminMahasiswaController extends Controller
         $user->delete();
 
         return redirect()->back()->with('success', 'Data mahasiswa berhasil dihapus!');
+    }
+
+    public function import(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:xlsx,csv'
+        ]);
+
+        Excel::import(new UsersImport, $request->file('file'));
+
+        return back()->with('success', 'Data user berhasil diimport. Password default = Username masing-masing.');
     }
 }

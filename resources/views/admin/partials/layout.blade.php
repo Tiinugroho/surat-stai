@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="{{ asset('adm/dist/assets/vendors/bootstrap-icons/bootstrap-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('adm/dist/assets/css/app.css') }}">
     <link rel="shortcut icon" href="{{ asset('img/logo.png') }}" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
+
 </head>
 
 <body>
@@ -31,7 +33,21 @@
     <script src="{{ asset('adm/dist/assets/vendors/apexcharts/apexcharts.js') }}"></script>
     <script src="{{ asset('adm/dist/assets/js/pages/dashboard.js') }}"></script>
 
-    <script src="{{ asset('adm/dist/assets/vendors/simple-datatables/simple-datatables.js')}}"></script>
+    <script src="{{ asset('adm/dist/assets/vendors/simple-datatables/simple-datatables.js') }}"></script>
+    <!-- DataTables JS -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#dataTable').DataTable({
+                responsive: true,
+                autoWidth: true,
+            });
+        });
+    </script>
+
     <script>
         // Simple Datatable
         let table1 = document.querySelector('#table1');
@@ -39,6 +55,8 @@
     </script>
 
     <script src="{{ asset('adm/dist/assets/js/main.js') }}"></script>
+
+
 </body>
 
 </html>

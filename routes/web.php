@@ -33,10 +33,11 @@ Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('das
 Route::get('/admin/import-users', [UserImportController::class, 'showImportForm'])->name('admin.import.form');
 Route::post('/admin/import-users', [UserImportController::class, 'import'])->name('admin.import.users');
 
-Route::get('/admin/mahasiswa', [AdminMahasiswaController::class, 'index'])->name('admin.mahasiswa.index')->middleware('auth');
-Route::post('/admin/mahasiswa/store', [AdminMahasiswaController::class, 'store'])->name('admin.mahasiswa.store')->middleware('auth');
-Route::put('/admin/mahasiswa/{id}', [AdminMahasiswaController::class, 'update'])->name('admin.mahasiswa.update')->middleware('auth');
-Route::delete('/admin/mahasiswa/{id}', [AdminMahasiswaController::class, 'destroy'])->name('admin.mahasiswa.destroy')->middleware('auth');
+Route::get('admin/user/mahasiswa', [AdminMahasiswaController::class, 'index'])->name('admin.user.mahasiswa.index')->middleware('auth');
+Route::get('admin/user/mahasiswa/create', [AdminMahasiswaController::class, 'create'])->name('admin.user.mahasiswa.create')->middleware('auth');
+Route::post('admin/user/mahasiswa/store', [AdminMahasiswaController::class, 'store'])->name('admin.user.mahasiswa.store')->middleware('auth');
+Route::put('admin/user/mahasiswa/{id}', [AdminMahasiswaController::class, 'update'])->name('admin.user.mahasiswa.update')->middleware('auth');
+Route::delete('admin/user/mahasiswa/{id}', [AdminMahasiswaController::class, 'destroy'])->name('admin.user.mahasiswa.destroy')->middleware('auth');
 
 
 // ini route package laravel ui | yang false itu routenya tdk aktif, kalo yang true itu aktif
