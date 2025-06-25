@@ -44,6 +44,13 @@ class AdminMahasiswaController extends Controller
 
         return redirect()->back()->with('success', 'Mahasiswa berhasil ditambahkan!');
     }
+
+    public function edit($id)
+    {
+        $mahasiswa = User::findOrFail($id);
+        return view('admin.user.mahasiswa.edit', compact('mahasiswa'));
+    }
+
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -77,10 +84,10 @@ class AdminMahasiswaController extends Controller
     public function import(Request $request)
     {
         $request->validate([
-            'file' => 'required|mimes:xlsx,csv'
+            'file' => 'required|mimes:xlsx,csv',
         ]);
 
-        Excel::import(new UsersImport, $request->file('file'));
+        Excel::import(new UsersImport(), $request->file('file'));
 
         return back()->with('success', 'Data user berhasil diimport. Password default = Username masing-masing.');
     }

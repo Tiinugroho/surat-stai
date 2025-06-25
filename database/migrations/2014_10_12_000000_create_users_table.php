@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('alamat')->nullable();
             $table->string('angkatan')->nullable();
             $table->string('program_study')->nullable();
+            $table->string('kode_prodi')->nullable();
             $table->string('keterangan')->nullable();
             $table->string('role'); // mahasiswa, dosen, tendik
             $table->string('password');

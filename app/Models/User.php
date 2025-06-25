@@ -24,6 +24,7 @@ class User extends Authenticatable
         'alamat',
         'angkatan',
         'program_study',
+        'kode_prodi',
         'keterangan',
         'role',
         'password',

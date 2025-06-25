@@ -12,6 +12,6 @@ class UsersExcelSeeder extends Seeder
      */
     public function run(): void
     {
-        Excel::import(new UsersImport, database_path('data/mahasiswa.xlsx'));
+        Excel::import(new UsersImport, database_path('data/mahasiswa_pai.xlsx'));
     }
 }

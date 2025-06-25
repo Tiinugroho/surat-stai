@@ -226,6 +226,53 @@
             </div>
 
         </div>
+        <div class="modal fade" id="modalPengajuan" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <form action="{{ route('welcome.surat.store') }}" method="POST">
+                @csrf
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalLabel">Ajukan Surat</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" name="jenis_surat_id" id="jenisSuratId">
+                        <div class="mb-3">
+                            <label>Jenis Surat</label>
+                            <input type="text" id="jenisSuratNama" class="form-control" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label>Keperluan</label>
+                            <textarea name="keperluan" class="form-control" required></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Ajukan</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('.open-form');
+
+            buttons.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const jenisId = this.getAttribute('data-id');
+                    const jenisNama = this.getAttribute('data-nama');
+
+                    document.getElementById('jenisSuratId').value = jenisId;
+                    document.getElementById('jenisSuratNama').value = jenisNama;
+
+                    let modal = new bootstrap.Modal(document.getElementById('modalPengajuan'));
+                    modal.show();
+                });
+            });
+        });
+    </script>
 
     </section><!-- /Faq Section -->
 

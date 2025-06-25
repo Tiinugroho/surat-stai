@@ -28,7 +28,6 @@ class LoginController extends Controller
         return 'username';
     }
 
-
     public function showLoginForm()
     {
         return view('login');
@@ -38,10 +37,7 @@ class LoginController extends Controller
     {
         $this->validateLogin($request);
 
-        if (
-            method_exists($this, 'hasTooManyLoginAttempts') &&
-            $this->hasTooManyLoginAttempts($request)
-        ) {
+        if (method_exists($this, 'hasTooManyLoginAttempts') && $this->hasTooManyLoginAttempts($request)) {
             $this->fireLockoutEvent($request);
             return $this->sendLockoutResponse($request);
         }
@@ -61,8 +57,14 @@ class LoginController extends Controller
     {
         $request->validate([
             'username' => 'required|string',
-            'password'        => 'required|string',
+            'password' => 'required|string',
         ]);
+    }
+
+    // redirect setelah logout
+    protected function loggedOut(Request $request)
+    {
+        return redirect('/login');
     }
 
     /**

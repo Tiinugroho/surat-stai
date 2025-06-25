@@ -1,10 +1,10 @@
 @extends('admin.partials.layout')
-@section('title', 'Daftar Mahasiswa')
+@section('title', 'Daftar Jenis Surat')
 
 @section('content')
     <div id="main">
         <div class="page-heading">
-            <h3>Daftar Mahasiswa</h3>
+            <h3>Daftar Jenis Surat</h3>
         </div>
         <div class="page-content">
             <section class="row">
@@ -30,15 +30,11 @@
 
                     <div class="card">
                         <div class="card-header">
-                            <h4>Data Mahasiswa</h4>
+                            <h4>Data Jenis Surat</h4>
                             <div class="card-header-action">
-                                <a href="{{ route('admin.user.mahasiswa.create') }}" class="btn btn-primary">
-                                    Tambah Mahasiswa
+                                <a href="{{ route('admin.surat.jenis.create') }}" class="btn btn-primary">
+                                    Tambah Jenis Surat
                                 </a>
-                                <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                                    data-bs-target="#importModal">
-                                    Import Mahasiswa
-                                </button>
 
                             </div>
                         </div>
@@ -48,35 +44,29 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Nama</th>
-                                            <th>Username</th>
-                                            <th>TTL</th>
-                                            <th>Alamat</th>
-                                            <th>Angkatan</th>
-                                            <th>Program Studi</th>
-                                            <th>Keterangan</th>
+                                            <th>Nama Jenis Surat</th>
+                                            <th>Kode Jenis Surat</th>
+                                            <th>Deskripsi</th>
+                                            <th>Template Surat</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($mahasiswas as $index => $mahasiswa)
+                                        @foreach ($jenisSurat as $index => $surat)
                                             <tr>
                                                 <td>{{ $index + 1 }}</td>
-                                                <td>{{ $mahasiswa->name }}</td>
-                                                <td>{{ $mahasiswa->username }}</td>
-                                                <td>{{ $mahasiswa->ttl }}</td>
-                                                <td>{{ $mahasiswa->alamat }}</td>
-                                                <td>{{ $mahasiswa->angkatan }}</td>
-                                                <td>{{ $mahasiswa->program_study }}</td>
-                                                <td>{{ $mahasiswa->keterangan }}</td>
+                                                <td>{{ $surat->nama_surat }}</td>
+                                                <td>{{ $surat->kode_surat }}</td>
+                                                <td>{{ $surat->deskripsi }}</td>
+                                                <td>{{ $surat->file_template }}</td>
                                                 <td>
                                                     <div class="d-flex gap-1">
-                                                        <a href="{{ route('admin.user.mahasiswa.edit', $mahasiswa->id) }}"
+                                                        <a href="{{ route('admin.surat.jenis.edit', $surat->id) }}"
                                                             class="btn btn-sm btn-warning">
                                                             <i class="bi bi-pencil-square"></i>
                                                         </a>
                                                         <form
-                                                            action="{{ route('admin.user.mahasiswa.destroy', $mahasiswa->id) }}"
+                                                            action="{{ route('admin.surat.jenis.destroy', $surat->id) }}"
                                                             method="POST"
                                                             onsubmit="return confirm('Yakin ingin hapus data ini?')"
                                                             class="d-inline">
@@ -99,31 +89,6 @@
 
                 </div>
             </section>
-        </div>
-
-        <!-- Modal Import -->
-        <div class="modal fade" id="importModal" tabindex="-1" aria-labelledby="importModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <form action="{{ route('admin.import.users') }}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="importModalLabel">Import Mahasiswa</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="mb-3">
-                                <label for="file" class="form-label">Pilih File (.xlsx / .csv)</label>
-                                <input type="file" name="file" id="file" class="form-control" required>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                            <button type="submit" class="btn btn-primary">Upload & Import</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
         </div>
 
     </div>
